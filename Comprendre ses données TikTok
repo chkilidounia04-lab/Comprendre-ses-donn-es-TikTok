@@ -1,0 +1,10 @@
+# Ignorer les données personnelles
+data/
+*.json
+*.zip
+
+# Ignorer les graphiques générés
+*.png
+
+# Ignorer les fichiers système Mac
+.DS_Store
