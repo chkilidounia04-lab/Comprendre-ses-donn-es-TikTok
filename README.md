@@ -1,3 +1,5 @@
+CHKILI Dounia - GAYE Anna - El ABDALI Douae
+
 # Audit Citoyen & RGPD
 
 Ce projet est un outil d'analyse de données personnelles TikTok utilisant le droit à la portabilité (Article 20 du RGPD). 
