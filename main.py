@@ -77,7 +77,7 @@ class TikTokMirror:
         print(f" Succès ! {len(self.all_videos)} vidéos chargées (Doublons ignorés).")
 
     def run_analysis(self):
-        """Lance toutes les analyses graphiques."""
+        """toutes les analyses graphiques."""
         if not self.all_videos:
             print(" Aucune donnée vidéo trouvée. Vérifiez le fichier JSON.")
             return
@@ -88,15 +88,15 @@ class TikTokMirror:
         df_v['Heure'] = df_v['Timestamp'].dt.hour
         
         plt.figure(figsize=(12, 6))
-        df_v['Heure'].value_counts().sort_index().plot(kind='bar', color='#ff0050') # Couleur TikTok
+        df_v['Heure'].value_counts().sort_index().plot(kind='bar', color='#ff0050') 
         plt.title("Mon Horloge Biologique TikTok (Vidéos vues par heure)")
         plt.xlabel("Heure de la journée (0h - 23h)")
         plt.ylabel("Nombre de vidéos")
         plt.savefig(os.path.join(self.script_dir, 'mon_addiction.png'))
-        print(" Graphique 'mon_addiction.png' généré !")
+        print(" Graphique 'mon_addiction.png' ")
 
         # 2. Analyse Thèmes (Commentaires & Recherches)
-        words_to_track = ['Ramadan', 'Maroc', 'Tea', 'Love', 'Maman', 'Dubai', 'Food', 'Skincare', 'Etude']
+        words_to_track = ['Tea', 'Love','Dubai', 'Food', 'Skincare', 'Etude', 'Economie', 'drama']
         combined_text = " ".join([str(c['Text']) for c in self.all_comments]) + " " + \
                         " ".join([str(s['Term']) for s in self.all_searches])
         
@@ -104,7 +104,7 @@ class TikTokMirror:
         
         plt.figure(figsize=(12, 6))
         plt.bar(counts.keys(), counts.values(), color='#00f2ea') # Deuxième couleur TikTok
-        plt.title("Mes Thèmes de Prédilection (Basé sur recherches et commentaires)")
+        plt.title("Les Thèmes de Prédilection (Basé sur recherches et commentaires)")
         plt.ylabel("Occurrences")
         plt.savefig(os.path.join(self.script_dir, 'mes_themes.png'))
         print(" Graphique 'mes_themes.png' généré !")
@@ -116,4 +116,4 @@ if __name__ == "__main__":
     app = TikTokMirror()
     app.load_data()
     app.run_analysis()
-    print(f"\n Mission accomplie, majeure de promo ! Tes 3 graphiques sont prêts.")
+    print(f"\n Les 3 graphiques sont prêts.")
